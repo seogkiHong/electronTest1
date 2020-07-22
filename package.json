@@ -48,7 +48,11 @@
     "nsis": {
       "createDesktopShortcut": "always",
       "license": "LICENSE"
-    }
+    },
+    "files": [
+      "./build/**/*",
+      "background.js"
+    ]
   },
   "main": "background.js",
   "dependencies": {
