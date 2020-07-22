@@ -15,7 +15,7 @@
     "postuninstall": "electron-builder install-app-deps",
     "start": "electron .",
     "release": "vue-cli-service electron:build -p always",
-    "test": "echo success"
+    "test": "echo success!"
   },
   "repository": "https://github.com/seogkiHong/electronTest1",
   "keywords": [
