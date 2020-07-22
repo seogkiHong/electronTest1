@@ -25,32 +25,6 @@
     "tutorial",
     "demo"
   ],
-  "build": {
-    "appId": "electron-test-3",
-    "publish": "github",
-    "dmg": {
-      "contents": [
-        {
-          "x": 110,
-          "y": 150
-        },
-        {
-          "x": 240,
-          "y": 150,
-          "type": "link",
-          "path": "/Applications"
-        }
-      ]
-    },
-    "appImage": {},
-    "nsis": {
-      "createDesktopShortcut": "always"
-    },
-    "files": [
-      "./build/**/*",
-      "./src/background.js"
-    ]
-  },
   "main": "./src/background.js",
   "dependencies": {
     "core-js": "^3.6.5",
