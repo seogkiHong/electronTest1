@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "test1",
-  "author": "rqw",
+  "author": "seogkiHong",
   "displayName": "test1",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -14,19 +14,37 @@
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },
+  "repository": "https://github.com/seogkiHong/electronTest1",
+  "keywords": [
+    "electron",
+    "ci",
+    "travis",
+    "tutorial",
+    "demo"
+  ],
   "build": {
-    "appId": "your.id",
-    "mac": {
-      "category": "your.app.category.type"
-    },
-    "win": {
-      "target": "portable"
-    },
-    "linux": {
-      "target": [
-        "AppImage",
-        "snap"
+    "appId": "electron-test-3",
+    "publish": "github",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
       ]
+    },
+    "appImage": {
+      "license": "LICENSE"
+    },
+    "nsis": {
+      "createDesktopShortcut": "always",
+      "license": "LICENSE"
     }
   },
   "main": "background.js",
