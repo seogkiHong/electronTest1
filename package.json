@@ -42,9 +42,7 @@
         }
       ]
     },
-    "appImage": {
-      "license": "LICENSE"
-    },
+    "appImage": {},
     "nsis": {
       "createDesktopShortcut": "always"
     },
