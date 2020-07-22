@@ -45,7 +45,7 @@
     "appImage": {
       "license": "LICENSE"
     },
-    "Snap": {
+    "snap": {
       "license": "LICENSE"
     },
     "nsis": {
