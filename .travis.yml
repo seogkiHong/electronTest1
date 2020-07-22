@@ -53,6 +53,7 @@ before_install:
     fi
 before_script:
   - git lfs pull
+  - snap install snapcraft --classic
 
 # on PRs and merges to master and prod run tests and build the app
 script:
