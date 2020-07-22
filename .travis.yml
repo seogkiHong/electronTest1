@@ -53,6 +53,7 @@ before_install:
     fi
   - sudo apt-get update
   - sudo apt-get install snapd
+  - sudo snap install snapcraft --classic
 before_script:
   - git lfs pull
 
