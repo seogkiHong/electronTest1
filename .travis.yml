@@ -34,7 +34,7 @@ matrix:
       language: generic
 
 notifications:
-  email: false
+  email: true
 
 # cache some files for faster builds
 cache:
