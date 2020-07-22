@@ -51,10 +51,10 @@
     },
     "files": [
       "./build/**/*",
-      ".dist/electron/background.js"
+      "./src/background.js"
     ]
   },
-  "main": ".dist/electron/background.js",
+  "main": "./src/background.js",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
