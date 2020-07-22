@@ -16,6 +16,9 @@ matrix:
       sudo: required
       services: docker
       language: generic
+      arch:
+        - armv7l
+        - arm64
 
 notifications:
   email: false
