@@ -20,7 +20,9 @@ module.exports = {
             },
           ],
         },
-        appImage: {},
+        appImage: {
+          arch: ["armv7l", "arm64"],
+        },
         nsis: {
           createDesktopShortcut: "always",
         },
