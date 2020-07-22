@@ -15,7 +15,7 @@
     "postuninstall": "electron-builder install-app-deps",
     "start": "electron .",
     "release": "electron-builder -p always",
-    "test": "echo success"
+    "test": "echo success test"
   },
   "repository": "https://github.com/seogkiHong/electronTest1",
   "keywords": [

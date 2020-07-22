@@ -51,7 +51,7 @@ script:
     else
       yarn test
     fi
-# only deploy to github on a merge to the prod branch
+# only deploy to github on a merge to the master branch
 deploy:
   provider: script
   script: bash deploy.travis.sh
