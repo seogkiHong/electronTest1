@@ -45,9 +45,6 @@
     "appImage": {
       "license": "LICENSE"
     },
-    "snap": {
-      "license": "LICENSE"
-    },
     "nsis": {
       "createDesktopShortcut": "always",
       "license": "LICENSE"
