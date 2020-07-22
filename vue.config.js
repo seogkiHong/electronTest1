@@ -24,7 +24,7 @@ module.exports = {
         nsis: {
           createDesktopShortcut: "always",
         },
-        files: ["./build/**/*", "./src/background.js"],
+        files: ["./build/**/*", "background.js"],
       },
     },
   },

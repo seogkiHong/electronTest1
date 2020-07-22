@@ -25,7 +25,7 @@
     "tutorial",
     "demo"
   ],
-  "main": "./src/background.js",
+  "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
