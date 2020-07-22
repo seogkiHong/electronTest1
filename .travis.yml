@@ -12,13 +12,26 @@ matrix:
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
     - os: linux
+      arch:
+        - armv7l
       dist: xenial
       sudo: required
       services: docker
       language: generic
+    - os: linux
       arch:
-        - armv7l
+        - amd64
+      dist: xenial
+      sudo: required
+      services: docker
+      language: generic
+    - os: linux
+      arch:
         - arm64
+      dist: xenial
+      sudo: required
+      services: docker
+      language: generic
 
 notifications:
   email: false
