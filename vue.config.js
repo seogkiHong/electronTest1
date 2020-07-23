@@ -21,16 +21,12 @@ module.exports = {
               arch: ["armv7l", "arm64", "x64"],
             },
           ],
-        },
-        linux: {
           target: [
             {
               target: "appImage",
               arch: ["armv7l", "arm64", "x64"],
             },
           ],
-        },
-        linux: {
           target: [
             {
               target: "rpm",
