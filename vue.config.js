@@ -18,7 +18,7 @@ module.exports = {
           target: [
             {
               target: "deb",
-              arch: ["armv7l", "amd64", "arm64"],
+              arch: ["armv7l", "arm64", "x64"],
             },
           ],
         },
