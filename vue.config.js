@@ -22,6 +22,22 @@ module.exports = {
             },
           ],
         },
+        linux: {
+          target: [
+            {
+              target: "appImage",
+              arch: ["armv7l", "arm64", "x64"],
+            },
+          ],
+        },
+        linux: {
+          target: [
+            {
+              target: "rpm",
+              arch: ["armv7l", "arm64", "x64"],
+            },
+          ],
+        },
         mac: {
           target: [
             {
