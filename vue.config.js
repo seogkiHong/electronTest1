@@ -21,10 +21,18 @@ module.exports = {
           ],
         },
         appImage: {},
-        snap: {},
-        portable: {},
+        deb: {},
         nsis: {
           createDesktopShortcut: "always",
+        },
+
+        linux: {
+          target: [
+            {
+              target: "deb, AppImage, snap",
+              arch: ["arm64", "amd64", "armv7l"],
+            },
+          ],
         },
       },
     },
