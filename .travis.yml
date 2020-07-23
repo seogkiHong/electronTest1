@@ -14,7 +14,7 @@ matrix:
     - os: linux
       arch:
         - armv7l
-      dist: xenial
+      dist: bionic
       sudo: required
       services: docker
       language: generic
@@ -22,7 +22,7 @@ matrix:
     - os: linux
       arch:
         - amd64
-      dist: xenial
+      dist: bionic
       sudo: required
       services: docker
       language: generic
@@ -30,7 +30,7 @@ matrix:
     - os: linux
       arch:
         - arm64
-      dist: xenial
+      dist: bionic
       sudo: required
       services: docker
       language: generic
@@ -60,6 +60,7 @@ before_script:
 script:
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      sudo apt-get update && sudo apt-get install snapd && sudo snap install snapscraft --classic &&
       docker run --rm \
         -v ${PWD}:/project \
         -v ~/.cache/electron:/root/.cache/electron \
