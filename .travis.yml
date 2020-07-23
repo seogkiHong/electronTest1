@@ -18,10 +18,7 @@ matrix:
       sudo: required
       services: docker
       language: generic
-      addons:
-        snaps:
-          - name: snapcraft
-            confinement: classic
+
     - os: linux
       arch:
         - amd64
@@ -29,6 +26,7 @@ matrix:
       sudo: required
       services: docker
       language: generic
+
     - os: linux
       arch:
         - arm64
