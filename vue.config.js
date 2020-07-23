@@ -18,7 +18,26 @@ module.exports = {
           target: [
             {
               target: "deb",
-              arch: ["amd64", "armv7l", "arm64"],
+              arch: ["armv7l", "amd64", "arm64"],
+            },
+          ],
+        },
+        mac: {
+          target: [
+            {
+              target: "dmg",
+              contents: [
+                {
+                  x: 110,
+                  y: 150,
+                },
+                {
+                  x: 240,
+                  y: 150,
+                  type: "link",
+                  path: "/Applications",
+                },
+              ],
             },
           ],
         },
