@@ -25,38 +25,6 @@
     "tutorial",
     "demo"
   ],
-  "build": {
-    "win": {
-      "target": [
-        {
-          "target": [
-            "nsis",
-            "portable"
-          ],
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ]
-    },
-    "linux": {
-      "target": [
-        {
-          "target": [
-            "appImage",
-            "deb",
-            "snap"
-          ],
-          "arch": [
-            "amd64",
-            "armv7l",
-            "arm64"
-          ]
-        }
-      ]
-    }
-  },
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",

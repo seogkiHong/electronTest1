@@ -6,24 +6,21 @@ module.exports = {
       builderOptions: {
         appId: "electron-test-3",
         publish: ["github"],
-        dmg: {
-          contents: [
+        win: {
+          target: [
             {
-              x: 110,
-              y: 150,
-            },
-            {
-              x: 240,
-              y: 150,
-              type: "link",
-              path: "/Applications",
+              target: ["nsis", "portable"],
+              arch: ["x64", "ia32"],
             },
           ],
         },
-        appImage: {},
-        deb: {},
-        nsis: {
-          createDesktopShortcut: "always",
+        linux: {
+          target: [
+            {
+              target: ["appImage", "deb", "snap"],
+              arch: ["amd64", "armv7l", "arm64"],
+            },
+          ],
         },
       },
     },
