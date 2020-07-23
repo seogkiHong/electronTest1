@@ -39,8 +39,12 @@ before_install:
     fi
 before_script:
   - git lfs pull
-  - sudo apt-get install --no-install-recommends -y libopenjp2-tools
-
+  - |
+    if [ "$TRAVIS_OS_NAME" == "linux"]; then
+      sudo apt-get install --no-install-recommends -y libopenjp2-tools
+    else
+      yarn test
+    fi
 # on PRs and merges to master and prod run tests and build the app
 script:
   - |
