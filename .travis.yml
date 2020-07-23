@@ -4,13 +4,13 @@
 matrix:
   include:
     # 맥 OS MID 2011 테스트 완료
-    # - os: osx
-    #   osx_image: xcode10.2
-    #   language: node_js
-    #   node_js: "11.10.1"
-    #   env:
-    #     - ELECTRON_CACHE=$HOME/.cache/electron
-    #     - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+    - os: osx
+      osx_image: xcode10.2
+      language: node_js
+      node_js: "11.10.1"
+      env:
+        - ELECTRON_CACHE=$HOME/.cache/electron
+        - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
     # 라즈베리파이 Raspbian 전용 3b+ 까지 테스트 완료
     - os: linux
@@ -18,21 +18,6 @@ matrix:
       sudo: required
       services: docker
       language: generic
-
-    # - os: linux
-    #   arch:
-    #     - amd64
-    #   dist: bionic
-    #   sudo: required
-    #   services: docker
-    #   language: generic
-    # - os: linux
-    #   arch:
-    #     - arm64
-    #   dist: bionic
-    #   sudo: required
-    #   services: docker
-    #   language: generic
 
 notifications:
   email: false
