@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "test1",
-  "author": "seogkiHong",
+  "author": "Seogki Hong <skhong@eco.kr>",
   "displayName": "test1",
   "scripts": {
     "serve": "vue-cli-service serve",
