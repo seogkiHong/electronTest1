@@ -19,21 +19,20 @@ matrix:
       services: docker
       language: generic
 
-    - os: linux
-      arch:
-        - amd64
-      dist: bionic
-      sudo: required
-      services: docker
-      language: generic
-
-    - os: linux
-      arch:
-        - arm64
-      dist: bionic
-      sudo: required
-      services: docker
-      language: generic
+    # - os: linux
+    #   arch:
+    #     - amd64
+    #   dist: bionic
+    #   sudo: required
+    #   services: docker
+    #   language: generic
+    # - os: linux
+    #   arch:
+    #     - arm64
+    #   dist: bionic
+    #   sudo: required
+    #   services: docker
+    #   language: generic
 
 notifications:
   email: true
