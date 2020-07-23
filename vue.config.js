@@ -9,7 +9,7 @@ module.exports = {
         win: {
           target: [
             {
-              target: "portable",
+              target: "nsis",
               arch: ["x64", "ia32"],
             },
           ],
