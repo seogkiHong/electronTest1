@@ -5,7 +5,7 @@ module.exports = {
     electronBuilder: {
       builderOptions: {
         appId: "electron-test-3",
-        publish: "github",
+        publish: ["github"],
         dmg: {
           contents: [
             {
@@ -24,15 +24,6 @@ module.exports = {
         deb: {},
         nsis: {
           createDesktopShortcut: "always",
-        },
-
-        linux: {
-          target: [
-            {
-              target: "deb, AppImage, snap",
-              arch: ["arm64", "amd64", "armv7l"],
-            },
-          ],
         },
       },
     },
