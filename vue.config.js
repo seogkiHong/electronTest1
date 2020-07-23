@@ -22,6 +22,7 @@ module.exports = {
         },
         appImage: {},
         snap: {},
+        portable: {},
         nsis: {
           createDesktopShortcut: "always",
         },
