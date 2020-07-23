@@ -26,18 +26,6 @@ module.exports = {
           target: [
             {
               target: "dmg",
-              contents: [
-                {
-                  x: 110,
-                  y: 150,
-                },
-                {
-                  x: 240,
-                  y: 150,
-                  type: "link",
-                  path: "/Applications",
-                },
-              ],
             },
           ],
         },
