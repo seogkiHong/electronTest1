@@ -9,7 +9,7 @@ module.exports = {
         win: {
           target: [
             {
-              target: ["nsis", "portable"],
+              target: "portable",
               arch: ["x64", "ia32"],
             },
           ],
@@ -17,7 +17,7 @@ module.exports = {
         linux: {
           target: [
             {
-              target: ["appImage", "deb", "snap"],
+              target: "deb",
               arch: ["amd64", "armv7l", "arm64"],
             },
           ],
