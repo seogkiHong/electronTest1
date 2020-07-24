@@ -5,6 +5,7 @@ module.exports = {
   pluginOptions: {
     electronBuilder: {
       builderOptions: {
+        // 현재까지 테스트 완료 Window 10, Mac OS Mid 2011, Ubuntu 18.04 x64, Centos 7 x64 (libxscrnsaver 설치 필요 rpm -Uvh로 설치), RaspberryPi 3b+
         appId: "electron-test-3",
         publish: ["github"],
         win: {

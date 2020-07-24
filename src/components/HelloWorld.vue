@@ -1,5 +1,5 @@
 <template>
-  <div ref="main">ㅎㅎㅎ</div>
+  <div ref="main" id="main"></div>
 </template>
 
 <script>
@@ -18,15 +18,15 @@ export default {
           type: "image",
           height: 50,
           weight: 50,
-          order: 1
+          order: 1,
         },
         {
           type: "url",
           height: 50,
           weight: 50,
-          order: 2
-        }
-      ]
+          order: 2,
+        },
+      ],
     };
   },
   created() {
@@ -56,7 +56,26 @@ export default {
       var instance = new ComponentClass({ store });
       instance.$mount();
       this.$refs.main.appendChild(instance.$el);
-    }
-  }
+    },
+  },
 };
 </script>
+<style scoped>
+.main {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.image_container {
+  width: 33%;
+  height: 33%;
+}
+.url_container {
+  width: 33%;
+  height: 33%;
+}
+.video_container {
+  width: 33%;
+  height: 33%;
+}
+</style>
