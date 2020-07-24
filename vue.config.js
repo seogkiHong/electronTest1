@@ -1,5 +1,6 @@
 module.exports = {
   transpileDependencies: ["vuetify"],
+  lintOnSave: false,
 
   pluginOptions: {
     electronBuilder: {
@@ -12,21 +13,25 @@ module.exports = {
               target: "nsis",
               arch: ["x64", "ia32"],
             },
+            {
+              target: "portable",
+              arch: ["x64", "ia32"],
+            },
           ],
         },
         linux: {
           target: [
             {
               target: "deb",
-              arch: ["armv7l", "arm64", "x64"],
+              arch: ["armv7l", "x64"],
             },
             {
               target: "appImage",
-              arch: ["armv7l", "arm64", "x64"],
+              arch: ["x64"],
             },
             {
               target: "rpm",
-              arch: ["armv7l", "arm64", "x64"],
+              arch: ["x64"],
             },
           ],
         },
