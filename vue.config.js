@@ -20,14 +20,10 @@ module.exports = {
               target: "deb",
               arch: ["armv7l", "arm64", "x64"],
             },
-          ],
-          target: [
             {
               target: "appImage",
               arch: ["armv7l", "arm64", "x64"],
             },
-          ],
-          target: [
             {
               target: "rpm",
               arch: ["armv7l", "arm64", "x64"],
