@@ -1,0 +1,10 @@
+.back_btn {
+  position: absolute;
+  bottom: calc(50% - 35px);
+  opacity: 0.5;
+  width: 35px;
+  height: 35px;
+}
+.back_btn:hover {
+  cursor: pointer;
+}

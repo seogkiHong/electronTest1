@@ -4,7 +4,6 @@ import { app, protocol, BrowserWindow, webviewTag } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
-const debug = require("electron-debug");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -73,7 +72,6 @@ app.on("ready", async () => {
     // Install Vue Devtools
     try {
       await installExtension(VUEJS_DEVTOOLS);
-      debug();
     } catch (e) {
       console.error("Vue Devtools failed to install:", e.toString());
     }

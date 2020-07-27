@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "imageContainer",
+  name: "imageComponent",
   data: {
     type: Object,
   },

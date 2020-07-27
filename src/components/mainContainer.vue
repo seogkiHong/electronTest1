@@ -121,7 +121,6 @@ export default {
     setInstance(container, data) {
       var ComponentClass = Vue.extend(container);
       var instance = new ComponentClass({ store, data: data });
-
       instance.$mount();
       this.$refs.main.appendChild(instance.$el);
       instance.init();

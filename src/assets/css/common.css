@@ -22,3 +22,7 @@
 .video-js * {
   outline: none;
 }
+
+.hide {
+  display: none;
+}

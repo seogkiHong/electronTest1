@@ -11,7 +11,7 @@
 <script>
 import VideoPlayer from "@/components/sub/player/VideoPlayer.vue";
 export default {
-  name: "videoContainer",
+  name: "videoComponent",
   components: { VideoPlayer },
   data: {
     type: Object,

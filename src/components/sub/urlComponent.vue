@@ -5,17 +5,24 @@
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
     <webview
+      v-bind:class="{ hide: hideWebView }"
       v-bind:src="type.data.url"
       plugins
       allowpopups
       style="width: 100%; height: 100%"
     ></webview>
+
+    <img
+      class="back_btn"
+      src="@/assets/image/arrow_back_36dp.png"
+      @click="webview.goBack()"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  name: "urlContainer",
+  name: "urlComponent",
   data: {
     type: Object,
   },
@@ -27,6 +34,7 @@ export default {
       width: "",
       height: "",
       webview: "",
+      hideWebView: true,
       curHeight: window.innerHeight,
       curWidth: window.innerWidth,
     };
@@ -44,16 +52,22 @@ export default {
       this.setWebViewOptions();
     },
     setWebViewOptions() {
-      this.webview = document.querySelector("webview");
+      this.webview = this.$el.querySelector("webview");
       this.webview.addEventListener("dom-ready", () => {
         this.webview.insertCSS(
           "::-webkit-scrollbar { width: 6px }" +
             "::-webkit-scrollbar-thumb {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  border-radius: 10px;}" +
-            "body:hover, body:active, body:focus {overflow : overlay;}" +
+            "body:hover, body:active, body:focus {overflow : overlay}" +
             "body {overflow: hidden;}"
         );
+
+        this.hideWebView = false;
       });
     },
   },
 };
 </script>
+
+<style scoped>
+@import "~@/assets/css/urlComponent.css";
+</style>
