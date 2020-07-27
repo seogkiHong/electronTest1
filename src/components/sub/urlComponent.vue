@@ -14,8 +14,13 @@
 
     <img
       class="back_btn"
-      src="@/assets/image/arrow_back_36dp.png"
+      src="@/assets/image/before_48dp.png"
       @click="webview.goBack()"
+    />
+    <img
+      class="forward_btn"
+      src="@/assets/image/next_48dp.png"
+      @click="webview.goForward()"
     />
   </div>
 </template>
@@ -57,7 +62,7 @@ export default {
         this.webview.insertCSS(
           "::-webkit-scrollbar { width: 6px }" +
             "::-webkit-scrollbar-thumb {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  border-radius: 10px;}" +
-            "body:hover, body:active, body:focus {overflow : overlay}" +
+            "body:hover, body:active, body:focus {overflow-y : overlay}" +
             "body {overflow: hidden;}"
         );
 

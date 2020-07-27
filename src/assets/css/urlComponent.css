@@ -1,10 +1,15 @@
-.back_btn {
+.back_btn,
+.forward_btn {
   position: absolute;
   bottom: calc(50% - 35px);
   opacity: 0.5;
   width: 35px;
   height: 35px;
 }
-.back_btn:hover {
+.forward_btn {
+  right: 0;
+}
+.back_btn:hover,
+.forward_btn:hover {
   cursor: pointer;
 }
