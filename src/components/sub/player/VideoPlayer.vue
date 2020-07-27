@@ -25,16 +25,12 @@ export default {
       player: null,
     };
   },
-  created() {
-    console.log("created");
-  },
+  created() {},
   mounted() {
     this.player = videojs(
       this.$refs.videoPlayer,
       this.options,
-      function onPlayerReady() {
-        console.log("onPlayerReady", this);
-      }
+      function onPlayerReady() {}
     );
   },
   beforeDestroy() {

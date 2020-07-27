@@ -82,7 +82,7 @@ export default {
           top1: 10,
           top2: 90,
           data: {
-            url: "https://www.naver.com", // 반응형 테스트 url: "https://www.eplib.or.kr",
+            url: "https://www.youtube.com", // 반응형 테스트 url: "https://www.eplib.or.kr",
           },
         },
         {
