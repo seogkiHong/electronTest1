@@ -1,0 +1,44 @@
+.relative {
+  position: relative;
+}
+.fixed {
+  position: fixed;
+}
+.absolute {
+  position: absolute;
+}
+
+.no-scroll {
+  overflow: none;
+}
+
+.background-black {
+  background-color: black;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+.video-js * {
+  outline: none;
+}
+/* video js  */
+.video-container:focus {
+  outline: none !important;
+}
+.video-container {
+  outline: none !important;
+}
+
+.video-js
+  .vjs-volume-panel
+  .vjs-volume-control.vjs-slider-active.vjs-volume-vertical
+  .vjs-volume-bar,
+.video-js .vjs-big-play-button,
+.vjs-flat-skin .vjs-fullscreen-control,
+.vjs-flat-skin .vjs-subtitles-button,
+.video-js.vjs-default-skin.vjs-paused .vjs-big-play-button {
+  /*Remove comma from end*/
+  border: none !important;
+  box-shadow: none !important;
+}
