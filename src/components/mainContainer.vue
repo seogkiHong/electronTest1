@@ -93,6 +93,26 @@ export default {
           top2: 100,
         },
       ],
+      types3: [
+        {
+          type: "image",
+          left1: 0,
+          left2: 100,
+          top1: 0,
+          top2: 100,
+          isSlide: true,
+          images: ["test5.jpg", "test6.jpg", "test7.jpg", "test8.jpg"],
+        },
+      ],
+      types4: [
+        {
+          type: "video",
+          left1: 0,
+          left2: 100,
+          top1: 0,
+          top2: 100,
+        },
+      ],
     };
   },
   created() {
@@ -106,8 +126,8 @@ export default {
       //현재 관리기에서 저장된 스크린타입을 불러온다.
     },
     dynamicAdd() {
-      for (var i = 0; i < this.types2.length; i++) {
-        var curType = this.types2[i];
+      for (var i = 0; i < this.types4.length; i++) {
+        var curType = this.types4[i];
         if (curType.type == "image") {
           this.setInstance(imageContainer, { type: curType });
         } else if (curType.type == "url") {

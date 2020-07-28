@@ -4,13 +4,19 @@
     id="image-container"
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
-    <img src="@/assets/logo.png" style="width: 100%; height: 100%;" />
+    <template v-if="isSlide">
+      <image-slider />
+    </template>
+    <template v-else>
+      <img src="@/assets/logo.png" style="width: 100%; height: 100%;" />
+    </template>
   </div>
 </template>
 
 <script>
 export default {
   name: "imageComponent",
+  components: {},
   data: {
     type: Object,
   },
@@ -23,6 +29,8 @@ export default {
       height: "",
       curHeight: window.innerHeight,
       curWidth: window.innerWidth,
+      isSlide: false,
+      images: [],
     };
 
     //{type: "image",left1: 0, left2: 100,top1: 0,top2: 20,}
@@ -32,6 +40,8 @@ export default {
   methods: {
     init() {
       this.myType = this.$data.type;
+      this.isSlide = this.myType.isSlide;
+      this.images = this.myType.images;
       this.left1 = this.myType.left1 + "%";
       this.top1 = this.myType.top1 + "%";
       this.width = Number(this.myType.left2) - Number(this.myType.left1) + "%";

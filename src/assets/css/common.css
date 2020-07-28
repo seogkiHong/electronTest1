@@ -9,7 +9,7 @@
 }
 
 .no-scroll {
-  overflow: none;
+  overflow: hidden;
 }
 
 .background-black {
@@ -25,4 +25,32 @@
 
 .hide {
   display: none;
+}
+
+/* image slider  */
+
+.fade-transition {
+  transition: all 0.8s ease;
+  overflow: hidden;
+  visibility: visible;
+  opacity: 1;
+  position: absolute;
+}
+.fade-enter,
+.fade-leave {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.slide-transition {
+  transition: all 0.8s ease;
+  overflow: hidden;
+  visibility: visible;
+  opacity: 1;
+  position: absolute;
+}
+.slide-enter,
+.slide-leave {
+  opacity: 0;
+  visibility: hidden;
 }

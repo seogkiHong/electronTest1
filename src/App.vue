@@ -4,6 +4,7 @@
 
 <script>
 import mainContainer from "./components/mainContainer";
+
 export default {
   name: "App",
 

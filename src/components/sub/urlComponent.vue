@@ -14,12 +14,12 @@
 
     <img
       class="back_btn"
-      src="@/assets/image/before_48dp.png"
+      src="@/assets/img/before_48dp.png"
       @click="webview.goBack()"
     />
     <img
       class="forward_btn"
-      src="@/assets/image/next_48dp.png"
+      src="@/assets/img/next_48dp.png"
       @click="webview.goForward()"
     />
   </div>

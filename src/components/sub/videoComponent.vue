@@ -4,12 +4,16 @@
     id="video-container"
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
-    <video-player :options="videoOptions" style="width: 100%; height: 100%;" />
+    <!--  <video-player :options="videoOptions" style="width: 100%; height: 100%;" /> -->
+    <video control autoplay loop style="width: 100%; height: 100%;">
+      <source ref="electronVideo" type="video/mp4" />
+    </video>
   </div>
 </template>
 
 <script>
 import VideoPlayer from "@/components/sub/player/VideoPlayer.vue";
+
 export default {
   name: "videoComponent",
   components: { VideoPlayer },
@@ -26,15 +30,19 @@ export default {
       height: "",
       curHeight: window.innerHeight,
       curWidth: window.innerWidth,
+      path: "",
       videoOptions: {
-        autoplay: true,
+        autoplay: false,
         controls: false,
+        loop: true,
         fill: true,
         sources: [
           {
-            src:
+            /* src:
               "http://demo.unified-streaming.com/video/tears-of-steel/tears-of-steel.ism/.m3u8",
-            type: "application/x-mpegurl",
+            type: "application/x-mpegurl", */
+            src: "",
+            type: "video/mp4",
           },
         ],
       },
@@ -49,6 +57,13 @@ export default {
       this.top1 = this.myType.top1 + "%";
       this.width = Number(this.myType.left2) - Number(this.myType.left1) + "%";
       this.height = Number(this.myType.top2) - Number(this.myType.top1) + "%";
+
+      const { app } = window.require("electron").remote;
+
+      this.path = app.getPath("downloads") + "/whale.mp4";
+      this.$refs.electronVideo.src = `safe-file-protocol://${this.path}`;
+
+      console.log(this.path);
     },
   },
 };

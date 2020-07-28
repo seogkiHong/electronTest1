@@ -14,7 +14,7 @@ protocol.registerSchemesAsPrivileged([
   { scheme: "app", privileges: { secure: true, standard: true } },
 ]);
 
-function createWindow() {
+async function createWindow() {
   // Create the browser window.
 
   win = new BrowserWindow({
@@ -22,19 +22,23 @@ function createWindow() {
     height: 600,
     autoHideMenuBar: true,
     useContentSize: true,
+
     kiosk: true,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
+      //nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
+      nodeIntegration: true,
       webviewTag: true,
+      webSecurity: true,
       devTools: true,
+      enableRemoteModule: true,
     },
   });
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
-    win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
+    await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
     if (!process.env.IS_TEST) win.webContents.openDevTools();
   } else {
     createProtocol("app");
@@ -76,8 +80,23 @@ app.on("ready", async () => {
       console.error("Vue Devtools failed to install:", e.toString());
     }
   }
+  customProtocol();
   createWindow();
 });
+
+function customProtocol() {
+  const protocolName = "safe-file-protocol";
+
+  protocol.registerFileProtocol(protocolName, (request, callback) => {
+    const url = request.url.replace(`${protocolName}://`, "");
+    try {
+      return callback(decodeURIComponent(url));
+    } catch (error) {
+      // Handle the error as needed
+      console.error(error);
+    }
+  });
+}
 
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
