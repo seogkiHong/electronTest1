@@ -84,6 +84,7 @@ app.on("ready", async () => {
   createWindow();
 });
 
+//실질적으로 WEbsecurity Disable 하면 로컬파일을 읽어올 수 있지만 보안이 취약해짐으로 인해 커스텀 프로토콜을 생성후 그 프로토콜을 통해 로컬파일 을 불러오는 작업
 function customProtocol() {
   const protocolName = "safe-file-protocol";
 

@@ -5,7 +5,12 @@
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
     <!--  <video-player :options="videoOptions" style="width: 100%; height: 100%;" /> -->
-    <video control autoplay loop style="width: 100%; height: 100%;">
+    <video
+      control
+      autoplay
+      loop
+      style="width: 100%; height: 100%; display:block;"
+    >
       <source ref="electronVideo" type="video/mp4" />
     </video>
   </div>
