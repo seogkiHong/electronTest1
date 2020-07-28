@@ -8,7 +8,10 @@
       <image-slider />
     </template>
     <template v-else>
-      <img src="@/assets/logo.png" style="width: 100%; height: 100%;" />
+      <img
+        src="@/assets/logo.png"
+        style="width: 100%; height: 100%; line-height: 0;"
+      />
     </template>
   </div>
 </template>
