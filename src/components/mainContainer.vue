@@ -118,8 +118,8 @@ export default {
           type: "image",
           left1: 0,
           left2: 100,
-          top1: 10,
-          top2: 90,
+          top1: 0,
+          top2: 100,
           isSlide: true,
           imageOptions: {
             images: [
