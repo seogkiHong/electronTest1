@@ -1,16 +1,16 @@
 <template>
   <div
-    class="fixed background-black"
+    class="fixed background-black "
     id="image-container"
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
     <template v-if="isSlide">
-      <image-slider />
+      <image-slider :options="imageOptions" />
     </template>
     <template v-else>
       <img
-        src="@/assets/logo.png"
-        style="width: 100%; height: 100%; line-height: 0;"
+        src="@/assets/img/random/riot.jpg"
+        style="width: 100%; height: 100%;"
       />
     </template>
   </div>
@@ -33,7 +33,7 @@ export default {
       curHeight: window.innerHeight,
       curWidth: window.innerWidth,
       isSlide: false,
-      images: [],
+      imageOptions: {},
     };
 
     //{type: "image",left1: 0, left2: 100,top1: 0,top2: 20,}
@@ -44,7 +44,7 @@ export default {
     init() {
       this.myType = this.$data.type;
       this.isSlide = this.myType.isSlide;
-      this.images = this.myType.images;
+      this.imageOptions = this.myType.imageOptions;
       this.left1 = this.myType.left1 + "%";
       this.top1 = this.myType.top1 + "%";
       this.width = Number(this.myType.left2) - Number(this.myType.left1) + "%";

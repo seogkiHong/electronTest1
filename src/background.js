@@ -1,13 +1,13 @@
 "use strict";
 
-import { app, protocol, BrowserWindow, webviewTag } from "electron";
+import { app, protocol, BrowserWindow, Menu, ipcMain } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win;
+let win = null;
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -22,7 +22,7 @@ async function createWindow() {
     height: 600,
     autoHideMenuBar: true,
     useContentSize: true,
-
+    frame: true, //Remove frame to hide default menu
     kiosk: true,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
@@ -35,6 +35,73 @@ async function createWindow() {
       enableRemoteModule: true,
     },
   });
+  const isMac = process.platform === "darwin";
+  var menu = Menu.buildFromTemplate([
+    {
+      label: "Text",
+      click: function() {
+        win.webContents.send("menu", "text");
+      },
+    },
+    {
+      label: "Image",
+      click: function() {
+        win.webContents.send("menu", "image");
+      },
+    },
+    {
+      label: "Video",
+      click: function() {
+        win.webContents.send("menu", "video");
+      },
+    },
+    {
+      label: "PPT",
+      click: function() {
+        win.webContents.send("menu", "ppt");
+      },
+    },
+    {
+      label: "App",
+      click: function() {
+        win.webContents.send("menu", "app");
+      },
+    },
+    {
+      label: "OS Info",
+      click: function() {
+        win.webContents.send("menu", "osinfo");
+      },
+    },
+    {
+      label: "Device I/O",
+      click: function() {
+        win.webContents.send("menu", "deviceio");
+      },
+    },
+    {
+      label: "View",
+      submenu: [
+        { role: "reload" },
+        { role: "forcereload" },
+        { role: "toggledevtools" },
+        { type: "separator" },
+        { role: "resetzoom" },
+        { role: "zoomin" },
+        { role: "zoomout" },
+        { type: "separator" },
+        { role: "togglefullscreen" },
+      ],
+    },
+    {
+      label: "IPC Exit",
+      click: function() {
+        win.webContents.send("menu", "exit");
+      },
+    },
+  ]);
+
+  Menu.setApplicationMenu(menu);
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode

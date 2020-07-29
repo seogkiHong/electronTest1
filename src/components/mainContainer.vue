@@ -1,5 +1,7 @@
 <template>
-  <div ref="main" class="relative no-scroll"></div>
+  <div>
+    <div ref="main" class="relative no-scroll"></div>
+  </div>
 </template>
 
 <script>
@@ -13,6 +15,7 @@ export default {
   components: { imageContainer, urlContainer, videoContainer },
   data() {
     return {
+      selected: null,
       types: [
         {
           type: "image",
@@ -50,7 +53,7 @@ export default {
         },
       ],
 
-      types2: [
+      appType: [
         {
           type: "image",
           left1: 0,
@@ -74,6 +77,7 @@ export default {
           left2: 65,
           top1: 10,
           top2: 90,
+          isWeb: true,
         },
         {
           type: "url",
@@ -93,41 +97,87 @@ export default {
           top2: 100,
         },
       ],
-      types3: [
-        {
+      imageType: [
+        /* {
           type: "image",
           left1: 0,
           left2: 100,
           top1: 0,
           top2: 100,
           isSlide: true,
-          images: ["test5.jpg", "test6.jpg", "test7.jpg", "test8.jpg"],
+          imageOptions: {
+            images: [
+              "8k/test5.jpg",
+              "8k/test6.jpg",
+              "8k/test7.jpg",
+              "8k/test8.jpg",
+            ],
+          },
+        }, */
+        {
+          type: "image",
+          left1: 0,
+          left2: 100,
+          top1: 10,
+          top2: 90,
+          isSlide: true,
+          imageOptions: {
+            images: [
+              "test/2.png",
+              "test/6.png",
+              "test/10.png",
+              "test/10_1.png",
+              "test/11.png",
+              "test/12.png",
+            ],
+          },
         },
+        /*{
+          type: "image",
+          left1: 50,
+          left2: 100,
+          top1: 0,
+          top2: 50,
+          isSlide: true,
+          imageOptions: {
+            images: [
+              "test/20.png",
+              "test/22.png",
+              "test/24.png",
+              "test/24_1.png",
+              "test/29.png",
+            ],
+          },
+        }, */
       ],
-      types4: [
+      videoType: [
         {
           type: "video",
           left1: 0,
           left2: 100,
           top1: 0,
           top2: 100,
+          isWeb: false,
         },
       ],
+
+      selectedType: [],
     };
   },
-  created() {
-    this.getScreenType();
-  },
+  created() {},
   mounted() {
-    this.dynamicAdd();
+    this.selectedType = this.imageType;
+    this.getScreenType();
   },
   methods: {
     getScreenType() {
       //현재 관리기에서 저장된 스크린타입을 불러온다.
+
+      this.setIpcRenderer();
     },
     dynamicAdd() {
-      for (var i = 0; i < this.types4.length; i++) {
-        var curType = this.types4[i];
+      for (var i = 0; i < this.selectedType.length; i++) {
+        var curType = this.selectedType[i];
         if (curType.type == "image") {
           this.setInstance(imageContainer, { type: curType });
         } else if (curType.type == "url") {
@@ -138,12 +188,32 @@ export default {
       }
     },
 
+    changeComponent() {},
+
     setInstance(container, data) {
       var ComponentClass = Vue.extend(container);
       var instance = new ComponentClass({ store, data: data });
       instance.$mount();
       this.$refs.main.appendChild(instance.$el);
       instance.init();
+    },
+
+    setIpcRenderer() {
+      window.require("electron").ipcRenderer.on("menu", (event, message) => {
+        console.log(message); // Prints 'whoooooooh!'
+
+        if (message == "app") {
+          this.selectedType = this.appType;
+        } else if (message == "image") {
+          this.selectedType = this.imageType;
+        } else if (message == "video") {
+          this.selectedType = this.videoType;
+        }
+        this.$refs.main.innerHTML = "";
+        this.dynamicAdd();
+      });
+
+      this.dynamicAdd();
     },
   },
 };

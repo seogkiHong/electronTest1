@@ -1,39 +1,51 @@
 <template>
-  <div style="width: 100%; height: 100%;">
-    <div
-      v-for="number in [currentNumber]"
-      transition="slide"
-      :key="number"
-      style="width: 100%; height: 100%;"
+  <div style="position: relative; width: 100%; height: 100%;">
+    <transition-group
+      tag="div"
+      name="slide"
+      style="position: relative; width: 100%; height: 100%;"
     >
-      <img
-        :src="
-          require(`@/assets/img/8k/${
-            images[Math.abs(currentNumber) % images.length]
-          }`)
-        "
-        style="width: 100%; height: 100%;"
-      />
-    </div>
+      <div v-for="number in [currentNumber]" :key="number">
+        <img
+          :src="
+            require(`@/assets/img/${
+              options.images[Math.abs(currentNumber) % options.images.length]
+            }`)
+          "
+          style="width: 100%; height: 100%; object-fit:contain; position: absolute; "
+          rel="preload"
+        />
+      </div>
+    </transition-group>
   </div>
 </template>
 
 <script>
 export default {
   name: "image-slider",
+  props: {
+    options: {
+      type: Object,
+    },
+  },
   data() {
     return {
-      images: ["test5.jpg", "test6.jpg", "test7.jpg", "test8.jpg"],
       currentNumber: 0,
       timer: null,
-      ms: 3000,
+      ms: 5000,
     };
   },
 
   created() {
+    /*  :src="
+        require(`@/assets/img/8k/${
+        options.images[Math.abs(currentNumber) % options.images.length]
+        }`)
+    " */
+  },
+  mounted() {
     this.ready();
   },
-  mounted() {},
 
   methods: {
     ready() {
