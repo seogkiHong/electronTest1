@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed background-black "
+    class="fixed background-black"
     id="image-container"
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
@@ -8,10 +8,7 @@
       <image-slider :options="imageOptions" />
     </template>
     <template v-else>
-      <img
-        src="@/assets/img/random/riot.jpg"
-        style="width: 100%; height: 100%;"
-      />
+      <img src="@/assets/img/test/eco.png" style="width: 100%; height: 100%;" />
     </template>
   </div>
 </template>
@@ -19,7 +16,6 @@
 <script>
 export default {
   name: "imageComponent",
-  components: {},
   data: {
     type: Object,
   },
@@ -35,8 +31,6 @@ export default {
       isSlide: false,
       imageOptions: {},
     };
-
-    //{type: "image",left1: 0, left2: 100,top1: 0,top2: 20,}
   },
   created() {},
   mounted() {},

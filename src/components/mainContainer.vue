@@ -8,48 +8,36 @@
 import imageContainer from "@/components/sub/imageComponent";
 import urlContainer from "@/components/sub/urlComponent";
 import videoContainer from "@/components/sub/videoComponent";
+import textContainer from "@/components/sub/textComponent";
 import Vue from "vue";
 import store from "@/store";
 export default {
   name: "mainContainer",
-  components: { imageContainer, urlContainer, videoContainer },
+  components: { imageContainer, urlContainer, videoContainer, textContainer },
   data() {
     return {
-      selected: null,
-      types: [
+      textType: [
         {
-          type: "image",
+          type: "text",
           left1: 0,
-          left2: 50,
-          top1: 0,
-          top2: 10,
-        },
-        {
-          type: "url",
-          left1: 0,
-          left2: 50,
-          top1: 20,
-          top2: 70,
-          data: {
-            url: "https://www.google.com",
-          },
-        },
-        {
-          type: "url",
-          left1: 50,
           left2: 100,
           top1: 0,
-          top2: 100,
-          data: {
-            url: "https://www.naver.com", // 반응형 테스트 url: "https://www.eplib.or.kr"
+          top2: 50,
+          isSlide: true,
+          textOptions: {
+            texts: ["안녕하세요! 텍스트1 테스트 진행중입니다.~~"],
           },
         },
         {
-          type: "video",
+          type: "text",
           left1: 0,
-          left2: 50,
-          top1: 70,
+          left2: 100,
+          top1: 50,
           top2: 100,
+          isSlide: false,
+          textOptions: {
+            texts: ["안녕하세요! 텍스트2 테스트 진행중입니다.~~"],
+          },
         },
       ],
 
@@ -98,22 +86,6 @@ export default {
         },
       ],
       imageType: [
-        /* {
-          type: "image",
-          left1: 0,
-          left2: 100,
-          top1: 0,
-          top2: 100,
-          isSlide: true,
-          imageOptions: {
-            images: [
-              "8k/test5.jpg",
-              "8k/test6.jpg",
-              "8k/test7.jpg",
-              "8k/test8.jpg",
-            ],
-          },
-        }, */
         {
           type: "image",
           left1: 0,
@@ -137,23 +109,6 @@ export default {
             ],
           },
         },
-        /*{
-          type: "image",
-          left1: 50,
-          left2: 100,
-          top1: 0,
-          top2: 50,
-          isSlide: true,
-          imageOptions: {
-            images: [
-              "test/20.png",
-              "test/22.png",
-              "test/24.png",
-              "test/24_1.png",
-              "test/29.png",
-            ],
-          },
-        }, */
       ],
       videoType: [
         {
@@ -166,12 +121,78 @@ export default {
         },
       ],
 
+      totalType: [
+        {
+          type: "text",
+          left1: 0,
+          left2: 100,
+          top1: 0,
+          top2: 20,
+          isSlide: true,
+          textOptions: {
+            texts: ["안녕하세요! 텍스트1 테스트 진행중입니다.~~"],
+          },
+        },
+
+        {
+          type: "image",
+          left1: 0,
+          left2: 100,
+          top1: 20,
+          top2: 40,
+          isSlide: true,
+          imageOptions: {
+            images: [
+              "test/2.png",
+              "test/6.png",
+              "test/10.png",
+              "test/10_1.png",
+              "test/11.png",
+              "test/12.png",
+              "test/20.png",
+              "test/22.png",
+              "test/24.png",
+              "test/24_1.png",
+              "test/29.png",
+            ],
+          },
+        },
+        {
+          type: "url",
+          left1: 0,
+          left2: 100,
+          top1: 40,
+          top2: 60,
+          data: {
+            url: "https://www.youtube.com", // 반응형 테스트 url: "https://www.eplib.or.kr",
+          },
+        },
+
+        {
+          type: "video",
+          left1: 0,
+          left2: 100,
+          top1: 60,
+          top2: 80,
+          isWeb: true,
+        },
+
+        {
+          type: "video",
+          left1: 0,
+          left2: 100,
+          top1: 80,
+          top2: 100,
+          isWeb: false,
+        },
+      ],
+
       selectedType: [],
     };
   },
   created() {},
   mounted() {
-    this.selectedType = this.imageType;
+    this.selectedType = this.totalType;
     this.getScreenType();
   },
   methods: {
@@ -189,11 +210,11 @@ export default {
           this.setInstance(urlContainer, { type: curType });
         } else if (curType.type == "video") {
           this.setInstance(videoContainer, { type: curType });
+        } else if (curType.type == "text") {
+          this.setInstance(textContainer, { type: curType });
         }
       }
     },
-
-    changeComponent() {},
 
     setInstance(container, data) {
       var ComponentClass = Vue.extend(container);
@@ -205,7 +226,7 @@ export default {
 
     setIpcRenderer() {
       window.require("electron").ipcRenderer.on("menu", (event, message) => {
-        console.log(message); // Prints 'whoooooooh!'
+        console.log(message);
 
         if (message == "app") {
           this.selectedType = this.appType;
@@ -213,6 +234,10 @@ export default {
           this.selectedType = this.imageType;
         } else if (message == "video") {
           this.selectedType = this.videoType;
+        } else if (message == "text") {
+          this.selectedType = this.textType;
+        } else if (message == "total") {
+          this.selectedType = this.totalType;
         }
         this.$refs.main.innerHTML = "";
         this.dynamicAdd();

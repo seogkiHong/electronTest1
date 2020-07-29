@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed"
+    class="fixed background-black"
     id="url-container"
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >

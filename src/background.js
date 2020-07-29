@@ -38,6 +38,12 @@ async function createWindow() {
   const isMac = process.platform === "darwin";
   var menu = Menu.buildFromTemplate([
     {
+      label: "Total",
+      click: function() {
+        win.webContents.send("menu", "total");
+      },
+    },
+    {
       label: "Text",
       click: function() {
         win.webContents.send("menu", "text");

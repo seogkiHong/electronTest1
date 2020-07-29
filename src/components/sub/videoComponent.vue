@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed"
+    class="fixed background-black"
     id="video-container"
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
@@ -52,7 +52,7 @@ export default {
         sources: [
           {
             src:
-              "http://demo.unified-streaming.com/video/tears-of-steel/tears-of-steel.ism/.m3u8",
+              "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8",
             type: "application/x-mpegurl",
           },
         ],
