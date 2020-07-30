@@ -20,29 +20,29 @@ module.exports = {
             },
           ],
         },
-        linux: {
-          target: [
-            // {
-            //   target: "deb",
-            //   arch: ["armv7l", "x64"],
-            // },
-            // {
-            //   target: "appImage",
-            //   arch: ["x64"],
-            // },
-            // {
-            //   target: "rpm",
-            //   arch: ["x64"],
-            // },
-          ],
-        },
-        mac: {
-          target: [
-            {
-              // target: "dmg",
-            },
-          ],
-        },
+        // linux: {
+        //   target: [
+        //     {
+        //       target: "deb",
+        //       arch: ["armv7l", "x64"],
+        //     },
+        //     {
+        //       target: "appImage",
+        //       arch: ["x64"],
+        //     },
+        //     {
+        //       target: "rpm",
+        //       arch: ["x64"],
+        //     },
+        //   ],
+        // },
+        // mac: {
+        //   target: [
+        //     {
+        //      target: "dmg",
+        //     },
+        //   ],
+        // },
       },
     },
   },
