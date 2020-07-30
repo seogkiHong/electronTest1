@@ -10,10 +10,10 @@ module.exports = {
         publish: ["github"],
         win: {
           target: [
-            /* {
-              target: "nsis",
-              arch: ["x64", "ia32"],
-            }, */
+            // {
+            //   target: "nsis",
+            //   arch: ["x64", "ia32"],
+            // },
             {
               target: "portable",
               arch: ["x64", "ia32"],
@@ -22,27 +22,27 @@ module.exports = {
         },
         linux: {
           target: [
-            {
-              target: "deb",
-              arch: ["armv7l", "x64"],
-            },
-            /* {
-              target: "appImage",
-              arch: ["x64"],
-            },
-            {
-              target: "rpm",
-              arch: ["x64"],
-            }, */
+            // {
+            //   target: "deb",
+            //   arch: ["armv7l", "x64"],
+            // },
+            // {
+            //   target: "appImage",
+            //   arch: ["x64"],
+            // },
+            // {
+            //   target: "rpm",
+            //   arch: ["x64"],
+            // },
           ],
         },
-        /* mac: {
+        mac: {
           target: [
             {
-              target: "dmg",
+              // target: "dmg",
             },
           ],
-        }, */
+        },
       },
     },
   },

@@ -125,7 +125,7 @@ export default {
         {
           type: "text",
           left1: 0,
-          left2: 100,
+          left2: 50,
           top1: 0,
           top2: 20,
           isSlide: true,
@@ -137,9 +137,9 @@ export default {
         {
           type: "image",
           left1: 0,
-          left2: 100,
+          left2: 50,
           top1: 20,
-          top2: 40,
+          top2: 60,
           isSlide: true,
           imageOptions: {
             images: [
@@ -159,10 +159,10 @@ export default {
         },
         {
           type: "url",
-          left1: 0,
+          left1: 50,
           left2: 100,
-          top1: 40,
-          top2: 60,
+          top1: 0,
+          top2: 100,
           data: {
             url: "https://www.youtube.com", // 반응형 테스트 url: "https://www.eplib.or.kr",
           },
@@ -171,7 +171,7 @@ export default {
         {
           type: "video",
           left1: 0,
-          left2: 100,
+          left2: 50,
           top1: 60,
           top2: 80,
           isWeb: true,
@@ -180,7 +180,7 @@ export default {
         {
           type: "video",
           left1: 0,
-          left2: 100,
+          left2: 50,
           top1: 80,
           top2: 100,
           isWeb: false,
