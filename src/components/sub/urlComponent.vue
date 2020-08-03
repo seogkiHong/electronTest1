@@ -1,7 +1,7 @@
 <template>
   <div
-    class="fixed background-black"
-    id="url-container"
+    class="fixed"
+    id="url-component"
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
     <webview
@@ -9,7 +9,7 @@
       v-bind:src="type.data.url"
       plugins
       allowpopups
-      style="width: 100%; height: 100%"
+      style="width: 100%; height: 100%; background: white;"
     ></webview>
 
     <img
@@ -60,12 +60,12 @@ export default {
       this.webview = this.$el.querySelector("webview");
       this.webview.addEventListener("dom-ready", () => {
         this.webview.insertCSS(
-          "::-webkit-scrollbar { width: 6px }" +
-            "::-webkit-scrollbar-thumb {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  border-radius: 10px;}" +
-            "body:hover, body:active, body:focus {overflow-y : overlay}" +
-            "body {overflow: hidden;}"
+          "::-webkit-scrollbar { width: 6px; background: transparent;}" +
+            "::-webkit-scrollbar-thumb {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  border-radius: 10px;}"
         );
-
+        /* "body:hover, body:active, body:focus {overflow-y : overlay}" +
+            "body {overflow: hidden;}"
+ */
         this.hideWebView = false;
       });
     },

@@ -1,7 +1,7 @@
 <template>
   <div
     class="fixed background-black"
-    id="video-container"
+    id="video-component"
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
     <template v-if="isWeb">
@@ -45,14 +45,14 @@ export default {
       path: "",
       isWeb: false,
       videoOptions: {
-        autoplay: false,
+        autoplay: true,
         controls: false,
         loop: true,
         fill: true,
         sources: [
           {
             src:
-              "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8",
+              "https://multiplatform-f.akamaihd.net/i/multi/april11/sintel/sintel-hd_,512x288_450_b,640x360_700_b,768x432_1000_b,1024x576_1400_m,.mp4.csmil/master.m3u8",
             type: "application/x-mpegurl",
           },
         ],

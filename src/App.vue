@@ -11,10 +11,6 @@ export default {
   components: {
     mainContainer,
   },
-
-  data: () => ({
-    //
-  }),
 };
 </script>
 <style scoped>

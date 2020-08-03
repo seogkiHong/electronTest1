@@ -57,6 +57,9 @@ export default {
     prev() {
       this.currentNumber -= 1;
     },
+    beforeDestroy() {
+      this.stopRotation();
+    },
   },
 };
 </script>

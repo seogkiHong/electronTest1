@@ -1,7 +1,7 @@
 <template>
   <div
     class="fixed background-black"
-    id="image-container"
+    id="image-component"
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
     <template v-if="isSlide">
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import crypto from "crypto-js";
 export default {
   name: "imageComponent",
   data: {
@@ -43,6 +44,44 @@ export default {
       this.top1 = this.myType.top1 + "%";
       this.width = Number(this.myType.left2) - Number(this.myType.left1) + "%";
       this.height = Number(this.myType.top2) - Number(this.myType.top1) + "%";
+
+      this.encryptTestv3();
+      this.encryptTestv2();
+    },
+
+    encryptTestv2() {
+      var cryptoObj = window.crypto;
+      console.log(cryptoObj);
+      var array = new Uint32Array(10);
+      var randNum = window.crypto.getRandomValues(array);
+      console.log(randNum);
+    },
+
+    encryptTest() {
+      var pos = this;
+
+      var images = require.context("@/assets/img/test/", true, /\.png$/);
+
+      images.keys().forEach(function(key) {
+        console.log(`${key}`);
+
+        var img = new Image();
+        img.src = require("@/assets/img/test/" +
+          key.replace("/", "").replace(".", ""));
+        console.log(img);
+        pos.encrpyt();
+      });
+    },
+
+    encryptTestv3() {
+      var cryptos = require("crypto");
+      console.log(cryptos);
+    },
+
+    encrpyt() {
+      var iv = crypto.lib.WordArray.random(32);
+      var randNum = iv.words[Math.floor(Math.random() * iv.words.length)];
+      console.log(randNum);
     },
   },
 };

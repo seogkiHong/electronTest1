@@ -1,7 +1,7 @@
 <template>
   <div
     class="fixed background-black "
-    id="text-container"
+    id="text-component"
     v-bind:style="{ left: left1, top: top1, height: height, width: width }"
   >
     <template v-if="isSlide">

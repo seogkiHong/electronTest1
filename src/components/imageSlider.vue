@@ -36,13 +36,7 @@ export default {
     };
   },
 
-  created() {
-    /*  :src="
-        require(`@/assets/img/8k/${
-        options.images[Math.abs(currentNumber) % options.images.length]
-        }`)
-    " */
-  },
+  created() {},
   mounted() {
     this.ready();
   },
@@ -65,6 +59,9 @@ export default {
     },
     prev() {
       this.currentNumber -= 1;
+    },
+    beforeDestroy() {
+      this.stopRotation();
     },
   },
 };

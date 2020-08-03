@@ -23,7 +23,7 @@ async function createWindow() {
     autoHideMenuBar: true,
     useContentSize: true,
     frame: true, //Remove frame to hide default menu
-    kiosk: true,
+    kiosk: false,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
@@ -31,10 +31,12 @@ async function createWindow() {
       nodeIntegration: true,
       webviewTag: true,
       webSecurity: true,
+      defaultEncoding: "UTF-8",
       devTools: true,
       enableRemoteModule: true,
     },
   });
+  win.setBackgroundColor("#000000");
   const isMac = process.platform === "darwin";
   var menu = Menu.buildFromTemplate([
     {
@@ -123,7 +125,7 @@ async function createWindow() {
     win = null;
   });
 }
-
+app.allowRendererProcessReuse = false;
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
   // On macOS it is common for applications and their menu bar
@@ -155,7 +157,17 @@ app.on("ready", async () => {
   }
   customProtocol();
   createWindow();
+  registerIPC();
 });
+
+function registerIPC() {
+  ipcMain.on("ipc-exit", (event, arg) => {
+    console.log("ipc-exit called"); // "ping" 출력
+    console.log(win.closable);
+    win.close();
+    app.quit();
+  });
+}
 
 //실질적으로 WEbsecurity Disable 하면 로컬파일을 읽어올 수 있지만 보안이 취약해짐으로 인해 커스텀 프로토콜을 생성후 그 프로토콜을 통해 로컬파일 을 불러오는 작업
 function customProtocol() {

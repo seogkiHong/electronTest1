@@ -1,21 +1,43 @@
 <template>
   <div>
-    <div ref="main" class="relative no-scroll"></div>
+    <div ref="main" class="relative no-scroll background-black"></div>
   </div>
 </template>
 
 <script>
-import imageContainer from "@/components/sub/imageComponent";
-import urlContainer from "@/components/sub/urlComponent";
-import videoContainer from "@/components/sub/videoComponent";
-import textContainer from "@/components/sub/textComponent";
+import imageComponent from "@/components/sub/imageComponent";
+import urlComponent from "@/components/sub/urlComponent";
+import videoComponent from "@/components/sub/videoComponent";
+import textComponent from "@/components/sub/textComponent";
+import osInfoComponent from "@/components/sub/osInfoComponent";
+import exitComponent from "@/components/sub/exitComponent";
+import pptComponent from "@/components/sub/pptComponent";
+import deviceIoComponent from "@/components/sub/deviceIoComponent";
 import Vue from "vue";
 import store from "@/store";
 export default {
   name: "mainContainer",
-  components: { imageContainer, urlContainer, videoContainer, textContainer },
+  components: {
+    imageComponent,
+    urlComponent,
+    videoComponent,
+    textComponent,
+    osInfoComponent,
+    exitComponent,
+    pptComponent,
+    deviceIoComponent,
+  },
   data() {
     return {
+      exitType: [
+        {
+          type: "exit",
+          left1: 0,
+          left2: 100,
+          top1: 0,
+          top2: 100,
+        },
+      ],
       textType: [
         {
           type: "text",
@@ -45,44 +67,39 @@ export default {
         {
           type: "image",
           left1: 0,
-          left2: 100,
+          left2: 10,
           top1: 0,
-          top2: 10,
+          top2: 5,
         },
         {
           type: "url",
           left1: 0,
           left2: 25,
-          top1: 10,
-          top2: 90,
+          top1: 5,
+          top2: 100,
+          data: {
+            url: "http://www.suwonlib.go.kr:8080/?keyword=", // 반응형 테스트 url: "http://www.suwonlib.go.kr:8080/?keyword=",
+          },
+        },
+        {
+          type: "url",
+          left1: 25,
+          left2: 65,
+          top1: 5,
+          top2: 100,
           data: {
             url: "https://www.eplib.or.kr", // 반응형 테스트 url: "https://www.eplib.or.kr",
           },
         },
         {
-          type: "video",
-          left1: 25,
-          left2: 65,
-          top1: 10,
-          top2: 90,
-          isWeb: true,
-        },
-        {
           type: "url",
           left1: 65,
           left2: 100,
-          top1: 10,
-          top2: 90,
+          top1: 5,
+          top2: 100,
           data: {
             url: "https://www.youtube.com", // 반응형 테스트 url: "https://www.eplib.or.kr",
           },
-        },
-        {
-          type: "image",
-          left1: 0,
-          left2: 100,
-          top1: 90,
-          top2: 100,
         },
       ],
       imageType: [
@@ -94,20 +111,31 @@ export default {
           top2: 100,
           isSlide: true,
           imageOptions: {
-            images: [
-              "test/2.png",
-              "test/6.png",
-              "test/10.png",
-              "test/10_1.png",
-              "test/11.png",
-              "test/12.png",
-              "test/20.png",
-              "test/22.png",
-              "test/24.png",
-              "test/24_1.png",
-              "test/29.png",
-            ],
+            images: ["1-1.jpg", "1-2.jpg", "1-3.jpg"],
+            /* images: [
+              "test/2-min.png",
+              "test/6-min.png",
+              "test/10-min.png",
+              "test/10_1-min.png",
+              "test/11-min.png",
+              "test/12-min.png",
+              "test/20-min.png",
+              "test/22-min.png",
+              "test/24-min.png",
+              "test/24_1-min.png",
+              "test/29-min.png",
+            ], */
           },
+        },
+      ],
+
+      osInfoType: [
+        {
+          type: "osinfo",
+          left1: 0,
+          left2: 100,
+          top1: 0,
+          top2: 100,
         },
       ],
       videoType: [
@@ -118,6 +146,26 @@ export default {
           top1: 0,
           top2: 100,
           isWeb: false,
+        },
+      ],
+
+      deviceIoType: [
+        {
+          type: "deviceio",
+          left1: 0,
+          left2: 100,
+          top1: 0,
+          top2: 100,
+        },
+      ],
+
+      pptType: [
+        {
+          type: "ppt",
+          left1: 0,
+          left2: 100,
+          top1: 0,
+          top2: 100,
         },
       ],
 
@@ -142,20 +190,23 @@ export default {
           top2: 60,
           isSlide: true,
           imageOptions: {
-            images: [
-              "test/2.png",
-              "test/6.png",
-              "test/10.png",
-              "test/10_1.png",
-              "test/11.png",
-              "test/12.png",
-              "test/20.png",
-              "test/22.png",
-              "test/24.png",
-              "test/24_1.png",
-              "test/29.png",
-            ],
+            images: ["1-1.jpg", "1-2.jpg", "1-3.jpg"],
           },
+          /* imageOptions: {
+            images: [
+              "test/2-min.png",
+              "test/6-min.png",
+              "test/10-min.png",
+              "test/10_1-min.png",
+              "test/11-min.png",
+              "test/12-min.png",
+              "test/20-min.png",
+              "test/22-min.png",
+              "test/24-min.png",
+              "test/24_1-min.png",
+              "test/29-min.png",
+            ],
+          }, */
         },
         {
           type: "url",
@@ -164,7 +215,7 @@ export default {
           top1: 0,
           top2: 100,
           data: {
-            url: "https://www.youtube.com", // 반응형 테스트 url: "https://www.eplib.or.kr",
+            url: "http://www.suwonlib.go.kr:8080/?keyword=", // 반응형 테스트 url: "http://www.suwonlib.go.kr:8080/?keyword=",
           },
         },
 
@@ -192,7 +243,7 @@ export default {
   },
   created() {},
   mounted() {
-    this.selectedType = this.totalType;
+    this.selectedType = this.deviceIoType;
     this.getScreenType();
   },
   methods: {
@@ -205,13 +256,21 @@ export default {
       for (var i = 0; i < this.selectedType.length; i++) {
         var curType = this.selectedType[i];
         if (curType.type == "image") {
-          this.setInstance(imageContainer, { type: curType });
+          this.setInstance(imageComponent, { type: curType });
         } else if (curType.type == "url") {
-          this.setInstance(urlContainer, { type: curType });
+          this.setInstance(urlComponent, { type: curType });
         } else if (curType.type == "video") {
-          this.setInstance(videoContainer, { type: curType });
+          this.setInstance(videoComponent, { type: curType });
         } else if (curType.type == "text") {
-          this.setInstance(textContainer, { type: curType });
+          this.setInstance(textComponent, { type: curType });
+        } else if (curType.type == "osinfo") {
+          this.setInstance(osInfoComponent, { type: curType });
+        } else if (curType.type == "exit") {
+          this.setInstance(exitComponent, { type: curType });
+        } else if (curType.type == "deviceio") {
+          this.setInstance(deviceIoComponent, { type: curType });
+        } else if (curType.type == "ppt") {
+          this.setInstance(pptComponent, { type: curType });
         }
       }
     },
@@ -238,6 +297,14 @@ export default {
           this.selectedType = this.textType;
         } else if (message == "total") {
           this.selectedType = this.totalType;
+        } else if (message == "osinfo") {
+          this.selectedType = this.osInfoType;
+        } else if (message == "exit") {
+          this.selectedType = this.exitType;
+        } else if (message == "deviceio") {
+          this.selectedType = this.deviceIoType;
+        } else if (message == "ppt") {
+          this.selectedType = this.pptType;
         }
         this.$refs.main.innerHTML = "";
         this.dynamicAdd();
